@@ -5,10 +5,26 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author 2dam
+ * @author Yeray
  */
 public interface AccountControllerIFace {
+    
+    //ACCOUNTS
+    
+    public Account checkAcc();
+    
+    public void createAcc();
+    
+    public void addCustomers();
+    
+    public ArrayList<Movement> searchMovements(String idAcc);
+    
+    
+    
+    
     
 }
