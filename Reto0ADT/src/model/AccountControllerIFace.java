@@ -15,7 +15,7 @@ public interface AccountControllerIFace {
     
     //ACCOUNTS
     
-    public Account checkAcc();
+    public Account checkAcc(String idAcc);
     
     public void createAcc();
     
