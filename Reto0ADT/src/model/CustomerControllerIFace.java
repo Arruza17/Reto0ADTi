@@ -5,10 +5,22 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author 2dam
+ * @author Yeray
  */
 public interface CustomerControllerIFace {
+    
+    
+    //CUSTOMERS
+    
+    public void createCustomer();
+    
+    public Customer checkCustomer();
+    
+    public  ArrayList<Account> searchAcc();
+    
     
 }

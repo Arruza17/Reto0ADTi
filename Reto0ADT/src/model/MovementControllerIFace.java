@@ -7,8 +7,13 @@ package model;
 
 /**
  *
- * @author 2dam
+ * @author Yeray
  */
 public interface MovementControllerIFace {
     
+    //MOVEMENT
+    
+    public void makeMovement();
+    
 }
+
