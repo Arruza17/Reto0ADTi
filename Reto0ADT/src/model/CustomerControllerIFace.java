@@ -18,9 +18,9 @@ public interface CustomerControllerIFace {
     
     public void createCustomer();
     
-    public Customer checkCustomer(String cusId);
+    public Account checkCustomer(String cusId);
     
-    public  ArrayList<Account> searchAcc(String idCus, String idAcc );
+    public  ArrayList<Customer> searchAcc(String idCus, String idAcc );
     
     
     

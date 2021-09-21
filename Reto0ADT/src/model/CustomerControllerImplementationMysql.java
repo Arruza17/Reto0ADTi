@@ -19,9 +19,9 @@ public class CustomerControllerImplementationMysql implements CustomerController
     private Connection con;
 	private PreparedStatement stmt;
 	BDconnection db=new BDconnection();
-	final String createCustomer = "INSERT INTO VALUES(?,?,?,?,?)";
-	final String searchCustomer="SELECT * FROM bankdb WHERE codCustomer=?";
-	final String checkCustomerAccount="SELECT * FROM bankdb  ";
+	private final String CREATECUSTOMER = "INSERT INTO VALUES(?,?,?,?,?)";
+	private final String SEARCHCUSTOMER="SELECT * FROM bankdb WHERE codCustomer=?";
+	private final String CHECKCUSTOMERACC="SELECT * FROM bankdb  ";
 
     @Override
     public void createCustomer() {
@@ -29,12 +29,12 @@ public class CustomerControllerImplementationMysql implements CustomerController
     }
 
     @Override
-    public Customer checkCustomer(String cusId) {
+    public Account checkCustomer(String cusId) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     @Override
-    public ArrayList<Account> searchAcc(String idCus, String idAcc) {
+    public ArrayList<Customer> searchAcc(String idCus, String idAcc) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

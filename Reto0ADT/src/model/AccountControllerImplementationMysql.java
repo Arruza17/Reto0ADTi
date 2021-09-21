@@ -13,13 +13,13 @@ import java.util.ArrayList;
  */
 
 public class AccountControllerImplementationMysql implements AccountControllerIFace{
-    final String createAcc="Insert into account values(?,?,?,?,?,?,7)";
-    final String checkAcc="Select * from account where id=?";
-    final String addCustomers="Insert into customer_account values(?,?)";
-    final String searchMovements="Select * from movement where id=?";
+    final String CREATEACC="Insert into account values(?,?,?,?,?,?,7)";
+    final String CHECKACC="Select * from account where id=?";
+    final String ADDCUSTOMER="Insert into customer_account values(?,?)";
+    final String SEARCHMOVEMENT="Select * from movement where id=?";
 
     @Override
-    public Account checkAcc(String idAcc) {
+    public Customer checkAcc(String idAcc) {
         throw new UnsupportedOperationException("Not supported yet.");
         
     }

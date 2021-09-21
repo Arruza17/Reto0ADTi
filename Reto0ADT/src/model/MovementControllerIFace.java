@@ -13,7 +13,7 @@ public interface MovementControllerIFace {
     
     //MOVEMENT
     
-    public void makeMovement();
+    public void makeMovement(Movement mov);
     
 }
 

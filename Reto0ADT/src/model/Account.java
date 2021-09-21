@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  *
@@ -14,16 +15,13 @@ import java.io.Serializable;
 public class Account implements Serializable {
 
     private Integer id;
-    private String firstName;
-    private String lastName;
-    private String middleInitial;
-    private String street;
-    private String city;
-    private String state;
-    private Integer zip;
-    private Integer phone;
-    private String email;
-    //CONSTRUCTOR
+    private String description;
+    private double balance;
+    private double creditLane;
+    private double beginBalance;
+    private Date beginBalanceTimestamp;
+    private String type;
+    //CONSTRUCTORS
 
     public Account() {
     }
@@ -37,76 +35,52 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getLastName() {
-        return lastName;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
-    public String getMiddleInitial() {
-        return middleInitial;
+    public double getCreditLane() {
+        return creditLane;
     }
 
-    public void setMiddleInitial(String middleInitial) {
-        this.middleInitial = middleInitial;
+    public void setCreditLane(double creditLane) {
+        this.creditLane = creditLane;
     }
 
-    public String getStreet() {
-        return street;
+    public double getBeginBalance() {
+        return beginBalance;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setBeginBalance(double beginBalance) {
+        this.beginBalance = beginBalance;
     }
 
-    public String getCity() {
-        return city;
+    public Date getBeginBalanceTimestamp() {
+        return beginBalanceTimestamp;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setBeginBalanceTimestamp(Date beginBalanceTimestamp) {
+        this.beginBalanceTimestamp = beginBalanceTimestamp;
     }
 
-    public String getState() {
-        return state;
+    public String getType() {
+        return type;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Integer getZip() {
-        return zip;
-    }
-
-    public void setZip(Integer zip) {
-        this.zip = zip;
-    }
-
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
 }
