@@ -49,7 +49,7 @@ public class BDConnection {
 		  //String url = "jdbc:mysql://localhost/nombreBaseDatos";
 		  //con =  DriverManager.getConnection(url+"?" +"user=____&password=_____");
 			 
-		  con = DriverManager.getConnection(db, conn ,dbUser,dbPass,driver);
+		  con = DriverManager.getConnection(conn ,dbUser, dbPass);
 
 		} catch (SQLException e) {
 			
