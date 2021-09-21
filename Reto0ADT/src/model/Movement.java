@@ -5,13 +5,15 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author Ander Arruza
  */
-public class Movement {
+public class Movement implements Serializable {
+
     private Integer id;
     private Date timestamp;
     private double amount;
@@ -62,5 +64,5 @@ public class Movement {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
 }

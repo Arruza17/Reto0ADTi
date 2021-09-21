@@ -5,13 +5,15 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author Ander Arruza
  */
-public class Customer {
+public class Customer implements Serializable {
+
     private Integer id;
     private String description;
     private double balance;
@@ -80,5 +82,5 @@ public class Customer {
     public void setType(String type) {
         this.type = type;
     }
-    
+
 }

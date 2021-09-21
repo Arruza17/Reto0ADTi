@@ -5,10 +5,34 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author 2dam
+ * @author Yeray
  */
-public class CustomerAccount {
-    
+public class CustomerAccount implements Serializable {
+
+    private String idUser;
+    private String idAcc;
+
+    public CustomerAccount() {
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getIdAcc() {
+        return idAcc;
+    }
+
+    public void setIdAcc(String idAcc) {
+        this.idAcc = idAcc;
+    }
+
 }
