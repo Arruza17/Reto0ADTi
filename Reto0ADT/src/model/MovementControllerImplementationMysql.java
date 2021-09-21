@@ -9,6 +9,11 @@ package model;
  *
  * @author 2dam
  */
-public class MovementControllerImplementationMysql {
+public class MovementControllerImplementationMysql implements MovementControllerIFace{
+final String makeMovement="INSERT INTO movement values(?,?,?,?,?,?)";
+    @Override
+    public void makeMovement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
