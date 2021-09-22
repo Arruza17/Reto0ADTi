@@ -20,7 +20,7 @@ public class Account implements Serializable {
     private double balance;
     private double creditLane;
     private double beginBalance;
-    private Timestamp beginBalanceTimestamp;
+    private LocalDateTime beginBalanceTimestamp;
     private String type;
     //CONSTRUCTORS
 
@@ -68,11 +68,11 @@ public class Account implements Serializable {
         this.beginBalance = beginBalance;
     }
 
-    public Timestamp getBeginBalanceTimestamp() {
+    public LocalDateTime getBeginBalanceTimestamp() {
         return beginBalanceTimestamp;
     }
 
-    public void setBeginBalanceTimestamp(Timestamp beginBalanceTimestamp) {
+    public void setBeginBalanceTimestamp(LocalDateTime beginBalanceTimestamp) {
         this.beginBalanceTimestamp = beginBalanceTimestamp;
     }
 

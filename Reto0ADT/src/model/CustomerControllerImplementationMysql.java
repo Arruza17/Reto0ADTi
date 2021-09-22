@@ -148,7 +148,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
                                 acc.setId(rs.getInt(1));
                                 acc.setBalance(rs.getDouble(2));
                                 acc.setBeginBalance(rs.getDouble(3));
-                                acc.setBeginBalanceTimestamp(rs.getTimestamp(4));
+                                acc.setBeginBalanceTimestamp(rs.getTimestamp(4).toLocalDateTime());
 				acc.setCreditLane(rs.getDouble(5));
                                 acc.setDescription(rs.getString(6));
                                 acc.setType(rs.getString(7));
