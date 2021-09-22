@@ -37,7 +37,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
 			
 			stmt = con.prepareStatement(CREATECUSTOMER);
 
-			stmt.setInt(1,cus.getId());
+			stmt.setLong(1,cus.getId());
                         stmt.setString(2, cus.getCity());
                         stmt.setString(3, cus.getEmail());
                         stmt.setString(4, cus.getFirstName());
@@ -80,13 +80,13 @@ public class CustomerControllerImplementationMysql implements CustomerController
 		try {
 			stmt = con.prepareStatement(SEARCHCUSTOMER);
 
-			stmt.setInt(1, cus.getId());
+			stmt.setLong(1, cus.getId());
 
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
 				cus = new Customer();
-				cus.setId(rs.getInt(1));
+				cus.setId(rs.getLong(1));
                                 cus.setCity(rs.getString(2));
                                 cus.setEmail(rs.getString(3));
                                 cus.setFirstName(rs.getString(4));

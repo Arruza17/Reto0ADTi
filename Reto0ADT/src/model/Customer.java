@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Customer implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String middleInitial;
@@ -21,7 +21,7 @@ public class Customer implements Serializable {
     private String city;
     private String state;
     private Integer zip;
-    private Integer phone;
+    private Long phone;
     private String email;
     //CONSTRUCTOR
 
@@ -29,11 +29,11 @@ public class Customer implements Serializable {
     }
     //GETTERS AND SETTERS
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -93,11 +93,11 @@ public class Customer implements Serializable {
         this.zip = zip;
     }
 
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

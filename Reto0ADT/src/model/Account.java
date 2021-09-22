@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  */
 public class Account implements Serializable {
 
-    private Integer id;
+    private long id;
     private String description;
     private double balance;
     private double creditLane;
@@ -28,7 +28,7 @@ public class Account implements Serializable {
     }
     //GETTERS AND SETTERS
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
