@@ -43,7 +43,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
                         stmt.setString(4, cus.getFirstName());
                         stmt.setString(5, cus.getLastName());
                         stmt.setString(6, cus.getMiddleInitial());
-                        stmt.setInt(7, cus.getPhone());
+                        stmt.setLong(7, cus.getPhone());
                         stmt.setString(8, cus.getState());
                         stmt.setString(9, cus.getStreet());
                         stmt.setInt(10, cus.getZip());
@@ -92,7 +92,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
                                 cus.setFirstName(rs.getString(4));
                                 cus.setLastName(rs.getString(5));
                                 cus.setMiddleInitial(rs.getString(6));
-                                cus.setPhone(rs.getInt(7));
+                                cus.setPhone(rs.getLong(7));
                                 cus.setState(rs.getString(8));
                                 cus.setStreet(rs.getString(9));
                                 cus.setZip(rs.getInt(10));
