@@ -16,11 +16,11 @@ public interface CustomerControllerIFace {
     
     //CUSTOMERS
     
-    public void createCustomer();
+    public void createCustomer(Customer cus);
     
-    public Account checkCustomer(String cusId);
+    public Customer checkCustomer(String cusId);
     
-    public  ArrayList<Customer> searchAcc(String idCus, String idAcc );
+    public  ArrayList<Account> searchAcc(String idCus, String idAcc );
     
     
     
