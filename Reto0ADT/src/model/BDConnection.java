@@ -29,7 +29,7 @@ public class BDConnection {
         configFile = ResourceBundle.getBundle("resources.config");
 
         db = configFile.getString("DB");
-        conn = configFile.getString("conn");
+        conn = configFile.getString("Conn");
         dbUser = configFile.getString("DBUser");
         dbPass = configFile.getString("DBPass");
         driver = configFile.getString("Driver");

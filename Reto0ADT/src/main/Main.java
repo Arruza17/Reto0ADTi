@@ -6,11 +6,14 @@
 package main;
 
 import java.time.Clock;
+import model.Account;
 import model.AccountControllerIFace;
 import model.AccountControllerImplementationMysql;
 import model.Customer;
+import model.CustomerAccount;
 import model.CustomerControllerIFace;
 import model.CustomerControllerImplementationMysql;
+import model.Movement;
 import model.MovementControllerIFace;
 import model.MovementControllerImplementationMysql;
 import resources.Utilidades;
@@ -37,19 +40,19 @@ public class Main {
                 createCus();
                 break;
             case 2:
-                consultCus();
+                consultCusAcc();
                 break;
             case 3:
                 consultAcc();
                 break;
             case 4:
-                createCus();
+                createAcc();
                 break;
             case 5:
                 addCus();
                 break;
             case 6:
-                addCusAcc();
+                checkAcc();
                 break;
             case 7:
                 mkMovement();
@@ -86,27 +89,80 @@ public class Main {
         System.out.println(Utilidades.introducirCadena());
     }
 
-    private static void consultCus() {
+    private static void consultCusAcc() {
+        String customerID;
       System.out.println("Insert the customers ID to consult");
+      customerID=Utilidades.introducirCadena();
+      
     }
 
     private static void consultAcc() {
-        throw new UnsupportedOperationException("Not supported yet.");
+      String idClient;
+      idClient=Utilidades.introducirCadena("Introduce the clients id to check the accounts");
+        
+        
     }
 
     private static void addCus() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       CustomerAccount ca=new CustomerAccount();
+        System.out.println("Introduce the following data");
+       ca.setIdAcc(Utilidades.leerInt("ID of the account:"));
+       ca.setIdUser(Utilidades.leerInt("ID of the user:"));
+       
     }
 
-    private static void addCusAcc() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private static void checkAcc() {
+       long idaux;
+       idaux=Utilidades.leerInt("Introduce account id to check");
     }
 
     private static void mkMovement() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       Movement mv=new Movement();
+        System.out.println("Enter the following details of the movement:");
+        mv.setId(Utilidades.leerInt("ID:"));
+        System.out.println("Date & time");
+        mv.setTimestamp(Utilidades.introducirFechaDateTime());
+        System.out.println("Amount:");
+        mv.setAmount(Utilidades.leerDouble());
+         System.out.println("Balance:");
+        mv.setBalance(Utilidades.leerDouble());
+        mv.setDescription(Utilidades.introducirCadena("Description"));
+        
+        
     }
 
     private static void consultMv() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        String id;
+        System.out.println("Introduce the id of the movement");
+        id=Utilidades.introducirCadena();
+        
+    }
+
+    private static void createAcc() {
+        Account acc=new Account();
+        int option;
+        System.out.println("Insert the following data of the account:");
+        System.out.println("ID:");
+        acc.setId(Utilidades.leerInt());
+        System.out.println("Description:");
+        acc.setDescription(Utilidades.introducirCadena());
+        System.out.println("Balance:");
+        acc.setBalance(Utilidades.leerDouble());
+        System.err.println("Credit line:");
+        acc.setCreditLane(Utilidades.leerDouble());
+        System.err.println("Begin balance:");
+        acc.setBeginBalance(Utilidades.leerDouble());
+        System.out.println("Type 0-Standard 1-Credit");
+        option=Utilidades.leerInt(0, 1);
+        if(option==0){
+        acc.setType("STANDARD");
+        }else{
+        acc.setType("CREDIT");}
+        System.err.println("Local date");
+        acc.setBeginBalanceTimestamp(Utilidades.introducirFechaDateTime());
+        
+        
+        
     }
 }

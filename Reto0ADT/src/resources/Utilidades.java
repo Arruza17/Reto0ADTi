@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -23,7 +24,7 @@ public class Utilidades {
 public static LocalDate introducirFecha() {
 		Scanner sc=new Scanner(System.in);
 		LocalDate fecha=null;
-		DateTimeFormatter formateador=DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formateador=DateTimeFormatter.ofPattern("dd-MM-yyyy-");
 		String aux;
 		boolean error;
 		do {
@@ -402,6 +403,23 @@ public static String fechaToString(LocalDate fecha) {
 	
 	return wfecha;
 }
-
+public static LocalDateTime introducirFechaDateTime() {
+		Scanner sc=new Scanner(System.in);
+		LocalDateTime fecha=null;
+		DateTimeFormatter formateador=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		String aux;
+		boolean error;
+		do {
+			error=false;
+			aux=sc.next();
+			try {
+				fecha=LocalDateTime.parse(aux,formateador);
+			}catch(DateTimeParseException e) {
+				error=true;
+				System.out.println("Error, introduce fecha con formato dd-mm-aaaa");
+			}
+		}while(error);
+		return fecha;
+	}
 }
 

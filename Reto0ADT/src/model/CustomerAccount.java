@@ -13,25 +13,25 @@ import java.io.Serializable;
  */
 public class CustomerAccount implements Serializable {
 
-    private String idUser;
-    private String idAcc;
+    private long idUser;
+    private long idAcc;
 
     public CustomerAccount() {
     }
 
-    public String getIdUser() {
+    public long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(String idUser) {
+    public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
 
-    public String getIdAcc() {
+    public long getIdAcc() {
         return idAcc;
     }
 
-    public void setIdAcc(String idAcc) {
+    public void setIdAcc(long idAcc) {
         this.idAcc = idAcc;
     }
 

@@ -7,6 +7,7 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -14,12 +15,12 @@ import java.sql.Date;
  */
 public class Account implements Serializable {
 
-    private Integer id;
+    private long id;
     private String description;
     private double balance;
     private double creditLane;
     private double beginBalance;
-    private Date beginBalanceTimestamp;
+    private LocalDateTime beginBalanceTimestamp;
     private String type;
     //CONSTRUCTORS
 
@@ -27,7 +28,7 @@ public class Account implements Serializable {
     }
     //GETTERS AND SETTERS
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
@@ -67,11 +68,11 @@ public class Account implements Serializable {
         this.beginBalance = beginBalance;
     }
 
-    public Date getBeginBalanceTimestamp() {
+    public LocalDateTime getBeginBalanceTimestamp() {
         return beginBalanceTimestamp;
     }
 
-    public void setBeginBalanceTimestamp(Date beginBalanceTimestamp) {
+    public void setBeginBalanceTimestamp(LocalDateTime beginBalanceTimestamp) {
         this.beginBalanceTimestamp = beginBalanceTimestamp;
     }
 

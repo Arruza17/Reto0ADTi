@@ -8,6 +8,7 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 /**
  *
@@ -25,7 +26,7 @@ public class MovementControllerImplementationMysql implements MovementController
             PreparedStatement stmt;
             stmt = con.prepareStatement(MAKEMOVEMENT);
             stmt.setInt(1, mov.getId());
-            stmt.setDate(2, mov.getTimestamp());
+            stmt.setTimestamp(2, Timestamp.valueOf(mov.getTimestamp()));
             stmt.setDouble(3, mov.getAmount());
             stmt.setDouble(4, mov.getBalance());
             stmt.setString(5, mov.getDescription());

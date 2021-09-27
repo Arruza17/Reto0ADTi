@@ -7,6 +7,7 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.sql.Date;
 public class Movement implements Serializable {
 
     private Integer id;
-    private Date timestamp;
+    private LocalDateTime timestamp;
     private double amount;
     private double balance;
     private String description;
@@ -33,11 +34,11 @@ public class Movement implements Serializable {
         this.id = id;
     }
 
-    public Date getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
