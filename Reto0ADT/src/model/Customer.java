@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Customer implements Serializable {
 
     private long id;
+
     private String firstName;
     private String lastName;
     private String middleInitial;
@@ -30,128 +31,68 @@ public class Customer implements Serializable {
      */
     public Customer() {
     }
-    //GETTERS AND SETTERS
 
+    //GETTERS AND SETTERS
     public long getId() {
         return id;
     }
 
-    /**
-     *
-     * @return
-     */
     public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getFirstName() {
         return firstName;
     }
 
-    /**
-     *
-     * @param firstName
-     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getLastName() {
         return lastName;
     }
 
-    /**
-     *
-     * @param lastName
-     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getMiddleInitial() {
         return middleInitial;
     }
 
-    /**
-     *
-     * @param middleInitial
-     */
     public void setMiddleInitial(String middleInitial) {
         this.middleInitial = middleInitial;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getStreet() {
         return street;
     }
 
-    /**
-     *
-     * @param street
-     */
     public void setStreet(String street) {
         this.street = street;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getCity() {
         return city;
     }
 
-    /**
-     *
-     * @param city
-     */
     public void setCity(String city) {
         this.city = city;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getState() {
         return state;
     }
 
-    /**
-     *
-     * @param state
-     */
     public void setState(String state) {
         this.state = state;
     }
 
-    /**
-     *
-     * @return
-     */
     public Integer getZip() {
         return zip;
     }
 
-    /**
-     *
-     * @param zip
-     */
     public void setZip(Integer zip) {
         this.zip = zip;
     }
@@ -160,26 +101,14 @@ public class Customer implements Serializable {
         return phone;
     }
 
-    /**
-     *
-     * @return
-     */
     public void setPhone(long phone) {
         this.phone = phone;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getEmail() {
         return email;
     }
 
-    /**
-     *
-     * @param email
-     */
     public void setEmail(String email) {
         this.email = email;
     }

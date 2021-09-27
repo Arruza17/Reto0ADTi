@@ -6,7 +6,7 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -19,10 +19,10 @@ public class Account implements Serializable {
     private double balance;
     private double creditLane;
     private double beginBalance;
-    private Date beginBalanceTimestamp;
     private AccountType type;
-    //CONSTRUCTORS
+    private LocalDateTime beginBalanceTimestamp;
 
+    //CONSTRUCTORS
     /**
      *
      */
@@ -102,28 +102,16 @@ public class Account implements Serializable {
         this.beginBalance = beginBalance;
     }
 
-    /**
-     *
-     * @return
-     */
-    public Date getBeginBalanceTimestamp() {
-        return beginBalanceTimestamp;
-    }
-
-    /**
-     *
-     * @param beginBalanceTimestamp
-     */
-    public void setBeginBalanceTimestamp(Date beginBalanceTimestamp) {
-        this.beginBalanceTimestamp = beginBalanceTimestamp;
-    }
-
     public AccountType getType() {
         return type;
     }
 
     public void setType(AccountType type) {
         this.type = type;
+    }
+
+    void setBeginBalanceTimestamp(LocalDateTime toLocalDateTime) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
