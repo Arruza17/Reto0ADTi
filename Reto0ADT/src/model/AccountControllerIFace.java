@@ -25,13 +25,15 @@ public interface AccountControllerIFace {
     
     /**
      *
+     * @param acc
      */
-    public void createAcc();
+    public void createAcc(Account acc);
     
     /**
      *
+     * @param cus
      */
-    public void addCustomers();
+    public void addCustomers(Customer cus, Account acc);
     
     /**
      *

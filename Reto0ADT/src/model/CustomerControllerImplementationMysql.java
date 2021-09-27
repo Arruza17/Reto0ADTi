@@ -26,6 +26,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
 
     /**
      *
+     * @param cus the customer to create
      */
     @Override
     public void createCustomer(Customer cus) {
@@ -41,26 +42,24 @@ public class CustomerControllerImplementationMysql implements CustomerController
             stmt.setString(3, cus.getEmail());
             stmt.setString(4, cus.getFirstName());
             stmt.setString(5, cus.getLastName());
-            stmt.setString(6, cus.getMiddleInitial());
+            stmt.setString(6, String.valueOf(cus.getMiddleInitial()));
             stmt.setLong(7, cus.getPhone());
             stmt.setString(8, cus.getState());
             stmt.setString(9, cus.getStreet());
             stmt.setInt(10, cus.getZip());
 
             stmt.executeUpdate();
-        } catch (SQLException e1) {
-
-            e1.printStackTrace();
+        } catch (SQLException e1) {          
         } finally {
             try {
                 db.closeConnection(stmt, con);
             } catch (SQLException e) {
-
-                e.printStackTrace();
+   
             }
         }
 
-        throw new UnsupportedOperationException("Not supported yet.");
+
+
 
     }
 
@@ -86,7 +85,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
                 cus.setEmail(rs.getString(3));
                 cus.setFirstName(rs.getString(4));
                 cus.setLastName(rs.getString(5));
-                cus.setMiddleInitial(rs.getString(6));
+                cus.setMiddleInitial(rs.getString(6).charAt(0));
                 cus.setPhone(rs.getLong(7));
                 cus.setState(rs.getString(8));
                 cus.setStreet(rs.getString(9));
@@ -96,8 +95,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
                 cus = null;
             }
         } catch (SQLException e) {
-
-            e.printStackTrace();
+        
         } finally {
 
             if (rs != null) {
@@ -110,8 +108,6 @@ public class CustomerControllerImplementationMysql implements CustomerController
             try {
                 db.closeConnection(stmt, con);
             } catch (SQLException e) {
-
-                e.printStackTrace();
             }
         }
 

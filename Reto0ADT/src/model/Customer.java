@@ -14,10 +14,9 @@ import java.io.Serializable;
 public class Customer implements Serializable {
 
     private long id;
-
     private String firstName;
     private String lastName;
-    private String middleInitial;
+    private char middleInitial;
     private String street;
     private String city;
     private String state;
@@ -57,13 +56,14 @@ public class Customer implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getMiddleInitial() {
+    public char getMiddleInitial() {
         return middleInitial;
     }
 
-    public void setMiddleInitial(String middleInitial) {
+    public void setMiddleInitial(char middleInitial) {
         this.middleInitial = middleInitial;
     }
+
 
     public String getStreet() {
         return street;

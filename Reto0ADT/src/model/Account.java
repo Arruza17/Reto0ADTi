@@ -110,8 +110,16 @@ public class Account implements Serializable {
         this.type = type;
     }
 
-    void setBeginBalanceTimestamp(LocalDateTime toLocalDateTime) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public LocalDateTime getBeginBalanceTimestamp() {
+        return beginBalanceTimestamp;
     }
+
+    public void setBeginBalanceTimestamp(LocalDateTime beginBalanceTimestamp) {
+        this.beginBalanceTimestamp = beginBalanceTimestamp;
+    }
+
+    
+
+   
 
 }

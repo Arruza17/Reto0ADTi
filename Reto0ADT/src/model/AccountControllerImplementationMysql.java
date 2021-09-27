@@ -8,6 +8,8 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +23,8 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
     final String ADDCUSTOMER = "Insert into customer_account values(?,?)";
     final String SEARCHMOVEMENT = "Select * from movement where id=?";
     private final BDConnection DAO = new BDConnection();
+    private Connection con;
+    private PreparedStatement stmt;
 
     /**
      *
@@ -29,24 +33,49 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
      */
     @Override
     public Customer checkAcc(String idAcc) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ResultSet rs = null;
+        Customer cus = null;
 
-    }
+        con = DAO.openConnection();
 
-    /**
-     *
-     */
-    @Override
-    public void createAcc() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        try {
+            stmt = con.prepareStatement(CHECKACC);
+            stmt.setString(1, idAcc);
 
-    /**
-     *
-     */
-    @Override
-    public void addCustomers() {
-        throw new UnsupportedOperationException("Not supported yet.");
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                cus = new Customer();
+                cus.setId(rs.getLong(1));
+                cus.setCity(rs.getString(2));
+                cus.setEmail(rs.getString(3));
+                cus.setFirstName(rs.getString(4));
+                cus.setLastName(rs.getString(5));
+                cus.setMiddleInitial(rs.getString(6).charAt(0));
+                cus.setPhone(rs.getLong(7));
+                cus.setState(rs.getString(8));
+                cus.setStreet(rs.getString(9));
+                cus.setZip(rs.getInt(10));
+            }
+        } catch (SQLException e) {
+
+        } finally {
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+
+                }
+            }
+            try {
+                DAO.closeConnection(stmt, con);
+            } catch (SQLException e) {
+
+            }
+        }
+
+        return cus;
     }
 
     /**
@@ -59,8 +88,7 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
         ArrayList<Movement> movements = new ArrayList<>();
         Movement aux;
         try {
-            Connection con = DAO.openConnection();
-            PreparedStatement stmt;
+            con = DAO.openConnection();
             ResultSet rs = null;
             stmt = con.prepareStatement(SEARCHMOVEMENT);
             stmt.setString(1, idAcc);
@@ -73,16 +101,49 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
                     aux.setTimestamp(rs.getTimestamp("timestamp").toLocalDateTime());
                     aux.setBalance(rs.getDouble("balance"));
                     aux.setAmount(rs.getDouble("amount"));
-                   // aux.setAccount_id(rs.getLong("account_id"));
+                    // aux.setAccount_id(rs.getLong("account_id"));
                     movements.add(aux);
                 }
             }
-            rs.close();
             DAO.closeConnection(stmt, con);
-        } catch (Exception e) {
+        } catch (SQLException e) {
 
         }
         return movements;
+    }
+
+    @Override
+    public void createAcc(Account acc) {
+        try {
+            con = DAO.openConnection();
+            stmt = con.prepareStatement(CREATEACC);
+            stmt.setLong(1, acc.getId());
+            stmt.setString(2, acc.getDescription());
+            stmt.setDouble(3, acc.getBalance());
+            stmt.setDouble(4, acc.getBeginBalance());
+            stmt.setInt(5, acc.getType().ordinal());
+            stmt.setTimestamp(6, Timestamp.valueOf(acc.getBeginBalanceTimestamp()));
+            stmt.executeUpdate();
+            stmt.close();
+            DAO.closeConnection(stmt, con);
+        } catch (SQLException sql) {
+        }
+
+    }
+
+    @Override
+    public void addCustomers(Customer cus, Account acc) {
+        try {
+            con = DAO.openConnection();
+            stmt = con.prepareStatement(ADDCUSTOMER);
+            stmt.setLong(1, cus.getId());
+            stmt.setLong(2, acc.getId());
+            stmt.executeUpdate();
+            stmt.close();
+            DAO.closeConnection(stmt, con);
+        } catch (SQLException sql) {
+        }
+
     }
 
 }
