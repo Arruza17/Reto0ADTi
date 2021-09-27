@@ -17,25 +17,30 @@ import java.util.ResourceBundle;
  */
 public class BDConnection {
 
-    private ResourceBundle configFile;
-    private String db;
-    private String conn;
-    private String dbUser;
-    private String dbPass;
-    private String driver;
+    private final ResourceBundle configFile;
+    private final String db;
+    private final String conn;
+    private final String dbUser;
+    private final String dbPass;
+    private final String driver;
 
+    /**
+     *
+     */
     public BDConnection() {
 
         configFile = ResourceBundle.getBundle("resources.config");
-
         db = configFile.getString("DB");
         conn = configFile.getString("conn");
         dbUser = configFile.getString("DBUser");
         dbPass = configFile.getString("DBPass");
         driver = configFile.getString("Driver");
-
     }
 
+    /**
+     *
+     * @return
+     */
     public Connection openConnection() {
 
         Connection con = null;
@@ -44,7 +49,7 @@ public class BDConnection {
             //String url = "jdbc:mysql://localhost/nombreBaseDatos";
             //con =  DriverManager.getConnection(url+"?" +"user=____&password=_____");
 
-            con = DriverManager.getConnection(conn, dbUser, dbPass);
+            con = DriverManager.getConnection(conn+db, dbUser, dbPass);
 
         } catch (SQLException e) {
 
@@ -52,6 +57,12 @@ public class BDConnection {
         return con;
     }
 
+    /**
+     *
+     * @param stmt
+     * @param con
+     * @throws SQLException
+     */
     public void closeConnection(PreparedStatement stmt, Connection con) throws SQLException {
 
         if (stmt != null) {

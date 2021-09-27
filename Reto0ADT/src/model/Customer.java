@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Customer implements Serializable {
 
-    private Integer id;
+    private long id;
     private String firstName;
     private String lastName;
     private String middleInitial;
@@ -21,92 +21,167 @@ public class Customer implements Serializable {
     private String city;
     private String state;
     private Integer zip;
-    private Integer phone;
+    private long phone;
     private String email;
     //CONSTRUCTOR
 
+    /**
+     *
+     */
     public Customer() {
     }
     //GETTERS AND SETTERS
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    /**
+     *
+     * @return
+     */
+    public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     *
+     * @param firstName
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     *
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMiddleInitial() {
         return middleInitial;
     }
 
+    /**
+     *
+     * @param middleInitial
+     */
     public void setMiddleInitial(String middleInitial) {
         this.middleInitial = middleInitial;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStreet() {
         return street;
     }
 
+    /**
+     *
+     * @param street
+     */
     public void setStreet(String street) {
         this.street = street;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     *
+     * @param city
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getState() {
         return state;
     }
 
+    /**
+     *
+     * @param state
+     */
     public void setState(String state) {
         this.state = state;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getZip() {
         return zip;
     }
 
+    /**
+     *
+     * @param zip
+     */
     public void setZip(Integer zip) {
         this.zip = zip;
     }
 
-    public Integer getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    /**
+     *
+     * @return
+     */
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
 }

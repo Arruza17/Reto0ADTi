@@ -14,72 +14,115 @@ import java.sql.Date;
  */
 public class Account implements Serializable {
 
-    private Integer id;
+    private long id;
     private String description;
     private double balance;
     private double creditLane;
     private double beginBalance;
     private Date beginBalanceTimestamp;
-    private String type;
+    private AccountType type;
     //CONSTRUCTORS
 
+    /**
+     *
+     */
     public Account() {
     }
     //GETTERS AND SETTERS
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getBalance() {
         return balance;
     }
 
+    /**
+     *
+     * @param balance
+     */
     public void setBalance(double balance) {
         this.balance = balance;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getCreditLane() {
         return creditLane;
     }
 
+    /**
+     *
+     * @param creditLane
+     */
     public void setCreditLane(double creditLane) {
         this.creditLane = creditLane;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getBeginBalance() {
         return beginBalance;
     }
 
+    /**
+     *
+     * @param beginBalance
+     */
     public void setBeginBalance(double beginBalance) {
         this.beginBalance = beginBalance;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getBeginBalanceTimestamp() {
         return beginBalanceTimestamp;
     }
 
+    /**
+     *
+     * @param beginBalanceTimestamp
+     */
     public void setBeginBalanceTimestamp(Date beginBalanceTimestamp) {
         this.beginBalanceTimestamp = beginBalanceTimestamp;
     }
 
-    public String getType() {
+    public AccountType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(AccountType type) {
         this.type = type;
     }
 

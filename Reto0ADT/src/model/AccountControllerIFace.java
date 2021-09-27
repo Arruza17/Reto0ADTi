@@ -14,13 +14,30 @@ import java.util.ArrayList;
 public interface AccountControllerIFace {
     
     //ACCOUNTS
+
+    /**
+     *
+     * @param idAcc
+     * @return
+     */
     
     public Customer checkAcc(String idAcc);
     
+    /**
+     *
+     */
     public void createAcc();
     
+    /**
+     *
+     */
     public void addCustomers();
     
+    /**
+     *
+     * @param idAcc
+     * @return
+     */
     public ArrayList<Movement> searchMovements(String idAcc);
     
     

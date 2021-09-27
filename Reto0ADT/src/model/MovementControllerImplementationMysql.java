@@ -1,31 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 /**
  *
- * @author 2dam
+ * @author Yeray
  */
 public class MovementControllerImplementationMysql implements MovementControllerIFace {
 
     private final String MAKEMOVEMENT = "INSERT INTO movement values(?,?,?,?,?)";
     private final BDConnection DAO = new BDConnection();
 
+    /**
+     * @param mov Gets a movement and puts it into the DB
+     */
     @Override
     public void makeMovement(Movement mov) {
         try {
             Connection con = DAO.openConnection();
             PreparedStatement stmt;
             stmt = con.prepareStatement(MAKEMOVEMENT);
-            stmt.setInt(1, mov.getId());
-            stmt.setDate(2, mov.getTimestamp());
+            stmt.setLong(1, mov.getId());
+            stmt.setTimestamp(2, Timestamp.valueOf(mov.getTimestamp()));
             stmt.setDouble(3, mov.getAmount());
             stmt.setDouble(4, mov.getBalance());
             stmt.setString(5, mov.getDescription());

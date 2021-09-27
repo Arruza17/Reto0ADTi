@@ -7,8 +7,17 @@ package model;
 
 /**
  *
- * @author 2dam
+ * @author Yeray
  */
 public enum AccountType {
-    STANDARD,CREDIT
+
+    /**
+     * Tipo estándar para las cuentas
+     */
+    STANDARD,
+
+    /**
+     * Cuentas de tipo crédito
+     */
+    CREDIT
 }
