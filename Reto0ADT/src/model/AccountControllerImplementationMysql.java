@@ -32,50 +32,32 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
      * @return
      */
     @Override
-    public Customer checkAcc(String idAcc) {
+    public Account checkAcc(long idAcc) throws Exception {
         ResultSet rs = null;
-        Customer cus = null;
-
+        Account acc = null;
         con = DAO.openConnection();
-
         try {
             stmt = con.prepareStatement(CHECKACC);
-            stmt.setString(1, idAcc);
-
+            stmt.setLong(1, idAcc);
             rs = stmt.executeQuery();
-
             if (rs.next()) {
-                cus = new Customer();
-                cus.setId(rs.getLong(1));
-                cus.setCity(rs.getString(2));
-                cus.setEmail(rs.getString(3));
-                cus.setFirstName(rs.getString(4));
-                cus.setLastName(rs.getString(5));
-                cus.setMiddleInitial(rs.getString(6).charAt(0));
-                cus.setPhone(rs.getLong(7));
-                cus.setState(rs.getString(8));
-                cus.setStreet(rs.getString(9));
-                cus.setZip(rs.getInt(10));
+                acc = new Account();
+                acc.setId(rs.getLong(1));        
+                acc.setBalance(rs.getDouble(2));
+                acc.setBeginBalance(rs.getDouble(3));
+                acc.setBeginBalanceTimestamp(rs.getTimestamp(4).toLocalDateTime());
+                acc.setCreditLane(rs.getDouble(5));
+                acc.setDescription(rs.getString(6));
+                acc.setType(AccountType.values()[rs.getInt(7)]);
+                
             }
         } catch (SQLException e) {
-
+            throw e;
         } finally {
-
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-
-                }
-            }
-            try {
-                DAO.closeConnection(stmt, con);
-            } catch (SQLException e) {
-
-            }
+            closeRs(rs);
         }
 
-        return cus;
+        return acc;
     }
 
     /**
@@ -84,7 +66,7 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
      * @return
      */
     @Override
-    public ArrayList<Movement> searchMovements(String idAcc) {
+    public ArrayList<Movement> searchMovements(String idAcc) throws Exception {
         ArrayList<Movement> movements = new ArrayList<>();
         Movement aux;
         try {
@@ -107,13 +89,14 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
             }
             DAO.closeConnection(stmt, con);
         } catch (SQLException e) {
+            throw e;
 
         }
         return movements;
     }
 
     @Override
-    public void createAcc(Account acc) {
+    public void createAcc(Account acc) throws Exception {
         try {
             con = DAO.openConnection();
             stmt = con.prepareStatement(CREATEACC);
@@ -127,23 +110,40 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
             stmt.close();
             DAO.closeConnection(stmt, con);
         } catch (SQLException sql) {
+            throw sql;
         }
 
     }
 
     @Override
-    public void addCustomers(Customer cus, Account acc) {
+    public void addCustomers(long cus, long acc) throws Exception {
         try {
             con = DAO.openConnection();
             stmt = con.prepareStatement(ADDCUSTOMER);
-            stmt.setLong(1, cus.getId());
-            stmt.setLong(2, acc.getId());
+            stmt.setLong(1, cus);
+            stmt.setLong(2, acc);
             stmt.executeUpdate();
             stmt.close();
             DAO.closeConnection(stmt, con);
         } catch (SQLException sql) {
+            throw sql;
         }
 
+    }
+
+    private void closeRs(ResultSet rs) {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+
+            }
+        }
+        try {
+            DAO.closeConnection(stmt, con);
+        } catch (SQLException e) {
+
+        }
     }
 
 }

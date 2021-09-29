@@ -21,22 +21,19 @@ public class CustomerControllerImplementationMysql implements CustomerController
     private PreparedStatement stmt;
     BDConnection db = new BDConnection();
     private final String CREATECUSTOMER = "INSERT INTO customer VALUES(?,?,?,?,?,?,?,?,?,?)";
-    private final String SEARCHCUSTOMER = "SELECT * FROM customer WHERE codCustomer=?";
-    private final String CHECKCUSTOMERACC = "SELECT a.* FROM account a,customer_account ca,customer c WHERE c.id=ca.customers_id AND ca.accounts_id=a.id AND c.id=?";
+    private final String SEARCHCUSTOMER = "SELECT * FROM customer WHERE id=?";
+    private final String CHECKCUSTOMERACC = "select * from account where id in (select accounts_id from customer_account where customers_id=?)";
 
     /**
      *
      * @param cus the customer to create
      */
     @Override
-    public void createCustomer(Customer cus) {
+    public void createCustomer(Customer cus) throws Exception {
 
         con = db.openConnection();
-
         try {
-
             stmt = con.prepareStatement(CREATECUSTOMER);
-
             stmt.setLong(1, cus.getId());
             stmt.setString(2, cus.getCity());
             stmt.setString(3, cus.getEmail());
@@ -47,24 +44,22 @@ public class CustomerControllerImplementationMysql implements CustomerController
             stmt.setString(8, cus.getState());
             stmt.setString(9, cus.getStreet());
             stmt.setInt(10, cus.getZip());
-
             stmt.executeUpdate();
-        } catch (SQLException e1) {          
+        } catch (SQLException e1) {
+            throw e1;
         } finally {
+
             try {
                 db.closeConnection(stmt, con);
             } catch (SQLException e) {
-   
+                throw new Exception(e.getMessage());
             }
         }
-
-
-
 
     }
 
     @Override
-    public Customer checkCustomer(String cusId) {
+    public Customer checkCustomer(Long cusId) throws Exception {
 
         ResultSet rs = null;
         Customer cus = null;
@@ -74,10 +69,8 @@ public class CustomerControllerImplementationMysql implements CustomerController
         try {
             stmt = con.prepareStatement(SEARCHCUSTOMER);
 
-            stmt.setLong(1, cus.getId());
-
+            stmt.setLong(1, cusId);
             rs = stmt.executeQuery();
-
             if (rs.next()) {
                 cus = new Customer();
                 cus.setId(rs.getLong(1));
@@ -90,25 +83,13 @@ public class CustomerControllerImplementationMysql implements CustomerController
                 cus.setState(rs.getString(8));
                 cus.setStreet(rs.getString(9));
                 cus.setZip(rs.getInt(10));
-
-            } else {
-                cus = null;
+                
             }
         } catch (SQLException e) {
-        
+            throw new Exception(e.getMessage());
         } finally {
+            closeRs(rs);
 
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-
-                }
-            }
-            try {
-                db.closeConnection(stmt, con);
-            } catch (SQLException e) {
-            }
         }
 
         return cus;
@@ -116,54 +97,51 @@ public class CustomerControllerImplementationMysql implements CustomerController
     }
 
     @Override
-    public ArrayList<Account> searchAcc(String idCus) {
+    public ArrayList<Account> searchAcc(String idCus) throws Exception {
         ResultSet rs = null;
-
-        ArrayList<Account> customerAccounts = new ArrayList<>();
-
+        ArrayList<Account> customerAccounts = null;
         con = db.openConnection();
 
         try {
-
             stmt = con.prepareStatement(CHECKCUSTOMERACC);
-
             stmt.setString(1, idCus);
-
             rs = stmt.executeQuery();
-
-            while (rs.next()) {
-
-                Account acc = new Account();
-                acc.setId(rs.getInt(1));
-                acc.setBalance(rs.getDouble(2));
-                acc.setBeginBalance(rs.getDouble(3));
-                acc.setBeginBalanceTimestamp(rs.getTimestamp(4).toLocalDateTime());
-                acc.setCreditLane(rs.getDouble(5));
-                acc.setDescription(rs.getString(6));
-                acc.setType(AccountType.valueOf(rs.getString(7)));
-
-                customerAccounts.add(acc);
-
-            }
-        } catch (SQLException e) {
-        } finally {
-
             if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-
+                customerAccounts = new ArrayList<>();
+                while (rs.next()) {
+                    Account acc = new Account();
+                    acc.setId(rs.getLong(1));
+                    acc.setBalance(rs.getDouble(2));
+                    acc.setBeginBalance(rs.getDouble(3));
+                    acc.setBeginBalanceTimestamp(rs.getTimestamp(4).toLocalDateTime());
+                    acc.setCreditLane(rs.getDouble(5));
+                    acc.setDescription(rs.getString(6));
+                    acc.setType(AccountType.values()[rs.getInt(7)]);
+                    customerAccounts.add(acc);
                 }
             }
+        } catch (SQLException e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            closeRs(rs);
+
+        }
+        return customerAccounts;
+    }
+
+    private void closeRs(ResultSet rs) {
+        if (rs != null) {
             try {
-                db.closeConnection(stmt, con);
+                rs.close();
             } catch (SQLException e) {
 
-                e.printStackTrace();
             }
         }
+        try {
+            db.closeConnection(stmt, con);
+        } catch (SQLException e) {
 
-        return customerAccounts;
+        }
     }
 
 }

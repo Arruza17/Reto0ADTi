@@ -12,38 +12,32 @@ import java.util.ArrayList;
  * @author Yeray
  */
 public interface AccountControllerIFace {
-    
+
     //ACCOUNTS
+    /**
+     *
+     * @param idAcc
+     * @return
+     */
+    public Account checkAcc(long idAcc) throws Exception;
+
+    /**
+     *
+     * @param acc
+     */
+    public void createAcc(Account acc) throws Exception;
+
+    /**
+     *
+     * @param cus
+     */
+    public void addCustomers(long cus, long acc) throws Exception;
 
     /**
      *
      * @param idAcc
      * @return
      */
-    
-    public Customer checkAcc(String idAcc);
-    
-    /**
-     *
-     * @param acc
-     */
-    public void createAcc(Account acc);
-    
-    /**
-     *
-     * @param cus
-     */
-    public void addCustomers(Customer cus, Account acc);
-    
-    /**
-     *
-     * @param idAcc
-     * @return
-     */
-    public ArrayList<Movement> searchMovements(String idAcc);
-    
-    
-    
-    
-    
+    public ArrayList<Movement> searchMovements(String idAcc) throws Exception;
+
 }

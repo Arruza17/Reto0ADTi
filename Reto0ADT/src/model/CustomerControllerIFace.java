@@ -17,9 +17,9 @@ public interface CustomerControllerIFace {
     /**
      * The method that allows the creation of a customer
      */
-    public void createCustomer(Customer cus);
+    public void createCustomer(Customer cus) throws Exception;
 
-    public Customer checkCustomer(String cusId);
+    public Customer checkCustomer(Long cusId ) throws Exception;
 
     /**
      * This method allows the user to check for all the accounts a user has
@@ -28,6 +28,6 @@ public interface CustomerControllerIFace {
      * @return collection of all the accounts the user has
      */
 
-    public ArrayList<Account> searchAcc(String idCus);
+    public ArrayList<Account> searchAcc(String idCus) throws Exception;
 
 }

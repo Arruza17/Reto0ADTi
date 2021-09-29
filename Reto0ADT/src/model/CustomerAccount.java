@@ -13,8 +13,8 @@ import java.io.Serializable;
  */
 public class CustomerAccount implements Serializable {
 
-    private String idUser;
-    private String idAcc;
+    private long idUser;
+    private long idAcc;
 
     /**
      *
@@ -22,35 +22,19 @@ public class CustomerAccount implements Serializable {
     public CustomerAccount() {
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getIdUser() {
+    public long getIdUser() {
         return idUser;
     }
 
-    /**
-     *
-     * @param idUser
-     */
-    public void setIdUser(String idUser) {
+    public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getIdAcc() {
+    public long getIdAcc() {
         return idAcc;
     }
 
-    /**
-     *
-     * @param idAcc
-     */
-    public void setIdAcc(String idAcc) {
+    public void setIdAcc(long idAcc) {
         this.idAcc = idAcc;
     }
 

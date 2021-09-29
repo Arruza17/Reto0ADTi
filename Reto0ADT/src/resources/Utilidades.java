@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -388,5 +389,22 @@ public class Utilidades {
 
         return wfecha;
     }
+
+    public static long leerLong() {
+        long fNumero = 0;
+        boolean ok;
+        do {
+            try {
+                ok = true;
+                fNumero = Long.parseLong(introducirCadena());
+            } catch (NumberFormatException e) {
+                System.out.println("Error al introducir el n?mero");
+                ok = false;
+            }
+        } while (!ok);
+        return fNumero;
+    }
+
+   
 
 }
