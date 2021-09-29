@@ -20,6 +20,10 @@ import java.util.Scanner;
  */
 public class Utilidades {
 
+    /**
+     *
+     * @return
+     */
     public static LocalDate introducirFecha() {
         Scanner sc = new Scanner(System.in);
         LocalDate fecha = null;
@@ -39,6 +43,10 @@ public class Utilidades {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String introducirCadena() {
         String cadena = "";
         boolean error = false;
@@ -56,6 +64,11 @@ public class Utilidades {
         return cadena;
     }
 
+    /**
+     *
+     * @param mensaje
+     * @return
+     */
     public static String introducirCadena(String mensaje) {
         String cadena = "";
         boolean error = false;
@@ -75,6 +88,11 @@ public class Utilidades {
         return cadena;
     }
 
+    /**
+     *
+     * @param x
+     * @return
+     */
     public static String leerString(int x) {
         String cadena = null;
         boolean ok;
@@ -89,6 +107,10 @@ public class Utilidades {
         return cadena;
     }
 
+    /**
+     *
+     * @return
+     */
     public static char leerChar() {
         boolean error = false;
         String letra;
@@ -105,6 +127,11 @@ public class Utilidades {
         return letra.charAt(0);
     }
 
+    /**
+     *
+     * @param mensaje
+     * @return
+     */
     public static char leerChar(String mensaje) {
         char letra;
         String frase;
@@ -121,6 +148,12 @@ public class Utilidades {
         return letra;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public static char leerChar(char x, char y) {
 
         char letra;
@@ -140,6 +173,11 @@ public class Utilidades {
         return letra;
     }
 
+    /**
+     *
+     * @param caracteres
+     * @return
+     */
     public static char leerCharArray(char caracteres[]) {
         int i;
         boolean error = false;
@@ -168,6 +206,10 @@ public class Utilidades {
         return aux;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int leerInt() {
         int num = 0;
         boolean error;
@@ -183,6 +225,11 @@ public class Utilidades {
         return num;
     }
 
+    /**
+     *
+     * @param mensaje
+     * @return
+     */
     public static int leerInt(String mensaje) {
         int num = 0;
         boolean error;
@@ -199,6 +246,12 @@ public class Utilidades {
         return num;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public static int leerInt(int x, int y) {
         int num;
         boolean error;
@@ -220,6 +273,13 @@ public class Utilidades {
         return num;
     }
 
+    /**
+     *
+     * @param mensaje
+     * @param x
+     * @param y
+     * @return
+     */
     public static int leerInt(String mensaje, int x, int y) {
         int num;
         boolean error;
@@ -242,6 +302,10 @@ public class Utilidades {
         return num;
     }
 
+    /**
+     *
+     * @return
+     */
     public static float leerFloat() {
         float num = 0;
         boolean error;
@@ -257,6 +321,11 @@ public class Utilidades {
         return num;
     }
 
+    /**
+     *
+     * @param mensaje
+     * @return
+     */
     public static float leerFloat(String mensaje) {
         float num = 0;
         boolean ok = true;
@@ -274,6 +343,12 @@ public class Utilidades {
         return num;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public static float leerFloat(float x, float y) {
         float num;
         boolean error;
@@ -295,6 +370,12 @@ public class Utilidades {
         return num;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public static double leerDouble(double x, double y) {
         double num = 0;
         boolean ok;
@@ -317,6 +398,10 @@ public class Utilidades {
         return num;
     }
 
+    /**
+     *
+     * @return
+     */
     public static double leerDouble() {
         double fNumero = 0;
         boolean ok;
@@ -332,6 +417,10 @@ public class Utilidades {
         return fNumero;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean esBoolean() {
         String respu;
         do {
@@ -344,6 +433,10 @@ public class Utilidades {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static LocalDate leerFecha() {
         String fechaAux;
         LocalDate fecha = LocalDate.now();
@@ -362,6 +455,11 @@ public class Utilidades {
         return fecha;
     }
 
+    /**
+     *
+     * @param mensaje
+     * @return
+     */
     public static LocalDate leerFecha(String mensaje) {
         String fechaAux;
         LocalDate fechaNac = LocalDate.now();
@@ -381,6 +479,11 @@ public class Utilidades {
         return fechaNac;
     }
 
+    /**
+     *
+     * @param fecha
+     * @return
+     */
     public static String fechaToString(LocalDate fecha) {
         DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String wfecha;
@@ -390,6 +493,10 @@ public class Utilidades {
         return wfecha;
     }
 
+    /**
+     *
+     * @return
+     */
     public static long leerLong() {
         long fNumero = 0;
         boolean ok;

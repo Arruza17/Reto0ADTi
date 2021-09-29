@@ -20,6 +20,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
     private Connection con;
     private PreparedStatement stmt;
     BDConnection db = new BDConnection();
+
     private final String CREATECUSTOMER = "INSERT INTO customer VALUES(?,?,?,?,?,?,?,?,?,?)";
     private final String SEARCHCUSTOMER = "SELECT * FROM customer WHERE id=?";
     private final String CHECKCUSTOMERACC = "select * from account where id in (select accounts_id from customer_account where customers_id=?)";
@@ -27,13 +28,14 @@ public class CustomerControllerImplementationMysql implements CustomerController
     /**
      *
      * @param cus the customer to create
+     * @throws java.lang.Exception
      */
     @Override
     public void createCustomer(Customer cus) throws Exception {
 
-        con = db.openConnection();
         try {
-            stmt = con.prepareStatement(CREATECUSTOMER);
+            con = db.openConnection();
+            stmt = con.prepareStatement("INSERT INTO customer VALUES(?,?,?,?,?,?,?,?,?,?)");
             stmt.setLong(1, cus.getId());
             stmt.setString(2, cus.getCity());
             stmt.setString(3, cus.getEmail());
@@ -52,12 +54,18 @@ public class CustomerControllerImplementationMysql implements CustomerController
             try {
                 db.closeConnection(stmt, con);
             } catch (SQLException e) {
-                throw new Exception(e.getMessage());
+                throw e;
             }
         }
 
     }
 
+    /**
+     *
+     * @param cusId
+     * @return
+     * @throws Exception
+     */
     @Override
     public Customer checkCustomer(Long cusId) throws Exception {
 
@@ -83,7 +91,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
                 cus.setState(rs.getString(8));
                 cus.setStreet(rs.getString(9));
                 cus.setZip(rs.getInt(10));
-                
+
             }
         } catch (SQLException e) {
             throw new Exception(e.getMessage());

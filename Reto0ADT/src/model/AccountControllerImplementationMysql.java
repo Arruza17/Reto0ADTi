@@ -21,7 +21,7 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
     final String CREATEACC = "Insert into account values(?,?,?,?,?,?,7)";
     final String CHECKACC = "Select * from account where id=?";
     final String ADDCUSTOMER = "Insert into customer_account values(?,?)";
-    final String SEARCHMOVEMENT = "Select * from movement where id=?";
+    final String SEARCHMOVEMENT = "select * from movement where account_id=?";
     private final BDConnection DAO = new BDConnection();
     private Connection con;
     private PreparedStatement stmt;
@@ -30,6 +30,7 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
      *
      * @param idAcc
      * @return
+     * @throws java.lang.Exception
      */
     @Override
     public Account checkAcc(long idAcc) throws Exception {
@@ -64,17 +65,18 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
      *
      * @param idAcc
      * @return
+     * @throws java.lang.Exception
      */
     @Override
-    public ArrayList<Movement> searchMovements(String idAcc) throws Exception {
+    public ArrayList<Movement> searchMovements(long idAcc) throws Exception {
         ArrayList<Movement> movements = new ArrayList<>();
         Movement aux;
         try {
             con = DAO.openConnection();
             ResultSet rs = null;
             stmt = con.prepareStatement(SEARCHMOVEMENT);
-            stmt.setString(1, idAcc);
-            rs = stmt.executeQuery(SEARCHMOVEMENT);
+            stmt.setLong(1, idAcc);
+            rs = stmt.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
                     aux = new Movement();
@@ -83,7 +85,7 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
                     aux.setTimestamp(rs.getTimestamp("timestamp").toLocalDateTime());
                     aux.setBalance(rs.getDouble("balance"));
                     aux.setAmount(rs.getDouble("amount"));
-                    // aux.setAccount_id(rs.getLong("account_id"));
+                    aux.setAccId(rs.getLong("account_id"));
                     movements.add(aux);
                 }
             }
@@ -145,5 +147,7 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
 
         }
     }
+
+    
 
 }

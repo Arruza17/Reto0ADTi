@@ -12,7 +12,8 @@ public interface MovementControllerIFace {
      * filled with data
      *
      * @param mov
+     * @throws java.lang.Exception
      */
-    public void makeMovement(Movement mov);
+    public void makeMovement(Movement mov) throws Exception;
 
 }

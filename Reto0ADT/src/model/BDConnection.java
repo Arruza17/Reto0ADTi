@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-
 /**
  *
  * @author 2dam
@@ -42,13 +41,13 @@ public class BDConnection {
      *
      * @return
      */
-    public Connection openConnection() {
+     public Connection openConnection() {
 
         Connection con = null;
 
         try {
             //String url = "jdbc:mysql://localhost/nombreBaseDatos";
-            //con =  DriverManager.getConnection(url+"?" +"user=____&password=_____");
+            //con =  DriverManager.getConnection(url+"?" +"user=&password=_");
 
             con = DriverManager.getConnection(conn, dbUser, dbPass);
 

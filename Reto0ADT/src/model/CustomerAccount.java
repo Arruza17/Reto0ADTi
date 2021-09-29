@@ -22,18 +22,34 @@ public class CustomerAccount implements Serializable {
     public CustomerAccount() {
     }
 
+    /**
+     *
+     * @return
+     */
     public long getIdUser() {
         return idUser;
     }
 
+    /**
+     *
+     * @param idUser
+     */
     public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getIdAcc() {
         return idAcc;
     }
 
+    /**
+     *
+     * @param idAcc
+     */
     public void setIdAcc(long idAcc) {
         this.idAcc = idAcc;
     }

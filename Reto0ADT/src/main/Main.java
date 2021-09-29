@@ -7,8 +7,6 @@ package main;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Account;
 import model.AccountControllerIFace;
 import model.AccountControllerImplementationMysql;
@@ -24,7 +22,7 @@ import resources.Utilidades;
 
 /**
  *
- * @author 2dam
+ * @author Group Yeray Ander Adrian Jorge
  */
 public class Main {
 
@@ -32,6 +30,11 @@ public class Main {
     private static CustomerControllerIFace ifaceCus;
     private static MovementControllerIFace ifaceMov;
 
+    /**
+     * Application main method
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         //
 
@@ -73,6 +76,9 @@ public class Main {
         } while (option != 9);
     }
 
+    /**
+     * Method that allows the user to create a new customer into the database
+     */
     private static void createCus() {
         Customer cus = new Customer();
         System.out.println("Insert the following data \n ID of the customer:");
@@ -96,6 +102,9 @@ public class Main {
 
     }
 
+    /**
+     * Method that allows the user to consult all the customer an account has
+     */
     private static void consultCusAcc() {
         System.out.println("Insert the customers ID to consult");
         Long customerID = Utilidades.leerLong();
@@ -113,8 +122,11 @@ public class Main {
 
     }
 
+    /**
+     * Method that allows the user to consult all the accounts a customer has
+     */
     private static void consultAcc() {
-        String idClient = Utilidades.introducirCadena("Introduce the clients id to check their accounts");
+        String idClient = Utilidades.introducirCadena("Enter the clients id to check their accounts");
         try {
             ArrayList<Account> accounts = ifaceCus.searchAcc(idClient);
             if (accounts.size() > 0) {
@@ -133,10 +145,13 @@ public class Main {
 
     }
 
+    /**
+     * Method that allows the user to add a new customer into an account
+     */
     private static void addCus() {
         try {
             CustomerAccount ca = new CustomerAccount();
-            System.out.println("Introduce the following data to add a new customer to an already existing account");
+            System.out.println("Enter the following data to add a new customer to an already existing account");
             System.out.println("Account  ID");
             ca.setIdAcc(Utilidades.leerLong());
             Account acc = ifaceAcc.checkAcc(ca.getIdAcc());
@@ -157,32 +172,92 @@ public class Main {
 
     }
 
+    /**
+     * Method that allows the user to check all the information about an
+     * specific account
+     */
     private static void checkAcc() {
-        long idaux;
-        idaux = Utilidades.leerInt("Introduce account id to check");
+        System.out.println("Enter the following data to check the data of an account");
+        System.out.println("Account  ID");
+        long idAcc = Utilidades.leerLong();
+        try {
+            Account a = ifaceAcc.checkAcc(idAcc);
+            if (a == null) {
+                System.out.println("There is no account with that ID in the server");
+            } else {
+                String type = a.getType().toString();
+                System.out.println(a.getId() + "\t" + a.getDescription() + "\t" + a.getBalance() + "\t" + type + "\t");
+            }
+        } catch (Exception ex) {
+
+        }
     }
 
+    /**
+     * Method that allows the user to make movements with an account
+     */
     private static void mkMovement() {
-        Movement mv = new Movement();
-        System.out.println("Enter the following details of the movement:");
-        System.out.println("ID:");
-        mv.setId(Utilidades.leerLong());
-        System.out.println("Date & time");
-        mv.setTimestamp(LocalDateTime.now());
-        System.out.println("Amount:");
-        mv.setAmount(Utilidades.leerDouble());
-        System.out.println("Balance:");
-        mv.setBalance(Utilidades.leerDouble());
-        mv.setDescription(Utilidades.introducirCadena("Description"));
-
+        System.out.println("Enter the account id to make the move");
+        long idAcc = Utilidades.leerLong();
+        try {
+            Account a = ifaceAcc.checkAcc(idAcc);
+            if (a == null) {
+                System.out.println("There is no account with that ID in the server");
+            } else {
+                Movement mv = new Movement();
+                System.out.println("Enter the following details of the movement:");
+                mv.setDescription(Utilidades.introducirCadena("Description"));
+                System.out.println("Amount:");
+                mv.setAmount(Utilidades.leerDouble());
+                mv.setBalance(a.getBalance() + mv.getAmount());
+                mv.setTimestamp(LocalDateTime.now());
+                mv.setAccId(idAcc);
+                try {
+                    ifaceMov.makeMovement(mv);
+                    System.out.println("Movement succesfully made");
+                } catch (Exception ex) {
+                    //                   System.out.println("There's been a problem trying to make the movement");
+                    System.out.println(ex.getMessage());
+                }
+            }
+        } catch (Exception ex) {
+            // System.out.println("There's been an issue retreiving data from the account");
+            System.out.println(ex.getMessage());
+        }
     }
 
+    /**
+     * Method that allows the user to check all the information about the
+     * movements from an account
+     */
     private static void consultMv() {
-        System.out.println("Introduce the id of the movement");
-        long id = Utilidades.leerLong();
+        System.out.println("Enter the account id to make the move");
+        long idAcc = Utilidades.leerLong();
+        try {
+            Account a = ifaceAcc.checkAcc(idAcc);
+            if (a == null) {
+                System.out.println("There is no account with that ID in the server");
+            } else {
+                ArrayList<Movement> movements = ifaceAcc.searchMovements(idAcc);
+                if (movements.size() > 0) {
+                    for (Movement m : movements) {
+                        System.out.println("ID\tDESC\tBALANCE\tAMOUNT\tTIMESTAMP");
+                        System.out.println(m.getId() + "\t" + m.getDescription() + "\t" + m.getBalance() + "\t" + m.getAmount() + "\t" + m.getTimestamp());
+                    }
+                } else {
+                    System.out.println("This account has not made any movements yet");
+                }
+            }
+        } catch (Exception ex) {
+            // System.out.println("There's been an issue retreiving data from the account");
+            System.out.println(ex.getMessage());
+        }
 
     }
 
+    /**
+     * Method that allows the user to create a new account
+     */
     private static void createAcc() {
         System.out.println("Enter the ID of the customer");
         long customer = Utilidades.leerLong();

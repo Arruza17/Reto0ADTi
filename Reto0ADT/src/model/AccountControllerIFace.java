@@ -18,18 +18,22 @@ public interface AccountControllerIFace {
      *
      * @param idAcc
      * @return
+     * @throws java.lang.Exception
      */
     public Account checkAcc(long idAcc) throws Exception;
 
     /**
      *
      * @param acc
+     * @throws java.lang.Exception
      */
     public void createAcc(Account acc) throws Exception;
 
     /**
      *
      * @param cus
+     * @param acc
+     * @throws java.lang.Exception
      */
     public void addCustomers(long cus, long acc) throws Exception;
 
@@ -37,7 +41,10 @@ public interface AccountControllerIFace {
      *
      * @param idAcc
      * @return
+     * @throws java.lang.Exception
      */
-    public ArrayList<Movement> searchMovements(String idAcc) throws Exception;
+    public ArrayList<Movement> searchMovements(long idAcc) throws Exception;
+
+
 
 }

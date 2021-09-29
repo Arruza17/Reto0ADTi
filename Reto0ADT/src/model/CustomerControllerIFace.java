@@ -16,9 +16,17 @@ public interface CustomerControllerIFace {
     //CUSTOMERS
     /**
      * The method that allows the creation of a customer
+     * @param cus
+     * @throws java.lang.Exception
      */
     public void createCustomer(Customer cus) throws Exception;
 
+    /**
+     *
+     * @param cusId
+     * @return
+     * @throws Exception
+     */
     public Customer checkCustomer(Long cusId ) throws Exception;
 
     /**
@@ -26,6 +34,7 @@ public interface CustomerControllerIFace {
      *
      * @param idCus the id of the customer to check
      * @return collection of all the accounts the user has
+     * @throws java.lang.Exception
      */
 
     public ArrayList<Account> searchAcc(String idCus) throws Exception;

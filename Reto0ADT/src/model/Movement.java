@@ -14,11 +14,12 @@ import java.time.LocalDateTime;
  */
 public class Movement implements Serializable {
 
-    private Long id;
+    private long id;
     private LocalDateTime timestamp;
     private double amount;
     private double balance;
     private String description;
+    private long accId;
 
     //CONSTRUCTORS
     /**
@@ -80,20 +81,54 @@ public class Movement implements Serializable {
         this.description = description;
     }
 
-    public Long getId() {
+    /**
+     *
+     * @return
+     */
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    /**
+     *
+     * @param id
+     */
+    public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
+    /**
+     *
+     * @param timestamp
+     */
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
+
+    /**
+     *
+     * @return
+     */
+    public long getAccId() {
+        return accId;
+    }
+
+    /**
+     *
+     * @param accId
+     */
+    public void setAccId(long accId) {
+        this.accId = accId;
+    }
+    
+    
 
 }
