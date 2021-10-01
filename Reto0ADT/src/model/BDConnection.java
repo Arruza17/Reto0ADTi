@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 /**
  *
- * @author 2dam
+ * @author Group
  */
 public class BDConnection {
 
@@ -38,8 +38,8 @@ public class BDConnection {
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return the connection open.
      */
      public Connection openConnection() {
 

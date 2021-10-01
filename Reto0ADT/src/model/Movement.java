@@ -32,15 +32,14 @@ public class Movement implements Serializable {
     /**
      * Amount gives you the information about the money used in this transaction
      *
-     * @return amount
+     * @return amount the total ammount of money
      */
     public double getAmount() {
         return amount;
     }
 
     /**
-     *
-     *
+     * Method that set the amount of money used in this transaction
      * @param amount the amount to be set
      */
     public void setAmount(double amount) {
@@ -50,14 +49,14 @@ public class Movement implements Serializable {
     /**
      * Is the balance left in the account after the transaction was made
      *
-     * @return balance
+     * @return balance the balance
      */
     public double getBalance() {
         return balance;
     }
 
     /**
-     *
+     * Method that sets the balance
      * @param balance the balance to be set
      */
     public void setBalance(double balance) {
@@ -74,7 +73,7 @@ public class Movement implements Serializable {
     }
 
     /**
-     *
+     * Method that sets the description
      * @param description the descriprtion to be set
      */
     public void setDescription(String description) {
@@ -82,48 +81,48 @@ public class Movement implements Serializable {
     }
 
     /**
-     *
-     * @return
+     * Method that returns the id of the movement
+     * @return the id of the movement
      */
     public long getId() {
         return id;
     }
 
     /**
-     *
-     * @param id
+     * Method that sets the id
+     * @param id the id
      */
     public void setId(long id) {
         this.id = id;
     }
 
     /**
-     *
-     * @return
+     * Method that returns the TimeStamp
+     * @return the Time
      */
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
     /**
-     *
-     * @param timestamp
+     * Method that sets the TimeStamp 
+     * @param timestamp the time
      */
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
     /**
-     *
-     * @return
+     * Method that gets the Account ID
+     * @return the Account id
      */
     public long getAccId() {
         return accId;
     }
 
     /**
-     *
-     * @param accId
+     * Method that sets the Account Id
+     * @param accId the Account id
      */
     public void setAccId(long accId) {
         this.accId = accId;

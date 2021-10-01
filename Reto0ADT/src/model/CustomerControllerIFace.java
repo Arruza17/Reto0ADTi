@@ -22,9 +22,9 @@ public interface CustomerControllerIFace {
     public void createCustomer(Customer cus) throws Exception;
 
     /**
-     *
-     * @param cusId
-     * @return
+     * Method that check the customer of a certain id
+     * @param cusId the one to search
+     * @return the checked Customer
      * @throws Exception
      */
     public Customer checkCustomer(Long cusId ) throws Exception;

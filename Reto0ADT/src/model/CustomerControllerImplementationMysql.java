@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 2dam
+ * @author Ander
  */
 public class CustomerControllerImplementationMysql implements CustomerControllerIFace {
 
@@ -26,7 +26,7 @@ public class CustomerControllerImplementationMysql implements CustomerController
     private final String CHECKCUSTOMERACC = "select * from account where id in (select accounts_id from customer_account where customers_id=?)";
 
     /**
-     *
+     * Method that creates the customer
      * @param cus the customer to create
      * @throws java.lang.Exception
      */
@@ -61,9 +61,9 @@ public class CustomerControllerImplementationMysql implements CustomerController
     }
 
     /**
-     *
-     * @param cusId
-     * @return
+     * Method that check the customer of a certain id
+     * @param cusId the one to search
+     * @return the checked Customer
      * @throws Exception
      */
     @Override
@@ -103,7 +103,12 @@ public class CustomerControllerImplementationMysql implements CustomerController
         return cus;
 
     }
-
+    /**
+     * This method allows the user to check for all the accounts a user has
+     * @param idCus the id of the customer to check
+     * @return collection of all the accounts the user has
+     * @throws java.lang.Exception
+     */
     @Override
     public ArrayList<Account> searchAcc(String idCus) throws Exception {
         ResultSet rs = null;

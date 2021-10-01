@@ -42,152 +42,152 @@ public class Customer implements Serializable {
     }
 
     /**
-     *
-     * @param id
+     * Method that sets the id
+     * @param id the one you want to set
      */
     public void setId(long id) {
         this.id = id;
     }
 
     /**
-     *
-     * @return
+     * Method that gets the first name
+     * @return the name
      */
     public String getFirstName() {
         return firstName;
     }
 
     /**
-     *
-     * @param firstName
+     * Method that sets the first name
+     * @param firstName the one to set
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     /**
-     *
-     * @return
+     * Method that gets the last name
+     * @return the last name
      */
     public String getLastName() {
         return lastName;
     }
 
     /**
-     *
-     * @param lastName
+     * Method that set the last name
+     * @param lastName the last name
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     /**
-     *
-     * @return
+     * Method that returns the middle initial
+     * @return the middle initial
      */
     public char getMiddleInitial() {
         return middleInitial;
     }
 
     /**
-     *
-     * @param middleInitial
+     * Method that set the middle initial
+     * @param middleInitial the middle initial
      */
     public void setMiddleInitial(char middleInitial) {
         this.middleInitial = middleInitial;
     }
 
     /**
-     *
-     * @return
+     * Method that returns the street
+     * @return the street
      */
     public String getStreet() {
         return street;
     }
 
     /**
-     *
-     * @param street
+     * Method that set the street
+     * @param street to add
      */
     public void setStreet(String street) {
         this.street = street;
     }
 
     /**
-     *
-     * @return
+     * Method that returns the city
+     * @return the city
      */
     public String getCity() {
         return city;
     }
 
     /**
-     *
-     * @param city
+     * Method that set the city
+     * @param city to add
      */
     public void setCity(String city) {
         this.city = city;
     }
 
     /**
-     *
-     * @return
+     * Method that returns the state
+     * @return the state
      */
     public String getState() {
         return state;
     }
 
     /**
-     *
-     * @param state
+     * Method that set the state
+     * @param state to add
      */
     public void setState(String state) {
         this.state = state;
     }
 
     /**
-     *
-     * @return
+     * Method that returns the ZIP code
+     * @return the ZIP code
      */
     public Integer getZip() {
         return zip;
     }
 
     /**
-     *
-     * @param zip
+     * Method that set the ZIP code
+     * @param zip to add
      */
     public void setZip(Integer zip) {
         this.zip = zip;
     }
 
     /**
-     *
-     * @return
+     * Method that returns the phone number
+     * @return the phone number
      */
     public long getPhone() {
         return phone;
     }
 
     /**
-     *
-     * @param phone
+     * Method that set the phone number
+     * @param phone to set
      */
     public void setPhone(long phone) {
         this.phone = phone;
     }
 
     /**
-     *
-     * @return
+     * Method that returns the email
+     * @return the email
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     *
-     * @param email
+     * Method that set the email
+     * @param email to set
      */
     public void setEmail(String email) {
         this.email = email;

@@ -13,8 +13,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
- *
- * @author 2dam
+ * The account controller that implements MySQL server
+ * @author Group
  */
 public class AccountControllerImplementationMysql implements AccountControllerIFace {
 
@@ -27,9 +27,9 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
     private PreparedStatement stmt;
 
     /**
-     *
-     * @param idAcc
-     * @return
+     * Method that allows the user to check an account
+     * @param idAcc the id we want to search
+     * @return the full Account
      * @throws java.lang.Exception
      */
     @Override
@@ -62,9 +62,9 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
     }
 
     /**
-     *
-     * @param idAcc
-     * @return
+     * Method that search every movement that 1 account does
+     * @param idAcc the one we want to search
+     * @return every movement in a Collection
      * @throws java.lang.Exception
      */
     @Override
@@ -96,7 +96,11 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
         }
         return movements;
     }
-
+    /**
+     * Method that creates an account
+     * @param acc the one we want to add
+     * @throws java.lang.Exception
+     */
     @Override
     public void createAcc(Account acc) throws Exception {
         try {
@@ -116,7 +120,12 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
         }
 
     }
-
+    /**
+     * Method that add Customers with both id's
+     * @param cus the one we want to add
+     * @param acc the account id we want to add
+     * @throws java.lang.Exception
+     */
     @Override
     public void addCustomers(long cus, long acc) throws Exception {
         try {
@@ -132,7 +141,10 @@ public class AccountControllerImplementationMysql implements AccountControllerIF
         }
 
     }
-
+    /**
+     * Method that closes the connection with MYSQL
+     * @param rs the one we want to search
+     */
     private void closeRs(ResultSet rs) {
         if (rs != null) {
             try {

@@ -15,32 +15,33 @@ public interface AccountControllerIFace {
 
     //ACCOUNTS
     /**
-     *
-     * @param idAcc
-     * @return
+     * Methot that checks the account
+     * @param idAcc to check
+     * @return the account that is checked
      * @throws java.lang.Exception
      */
     public Account checkAcc(long idAcc) throws Exception;
 
     /**
-     *
-     * @param acc
+     * Method that creates the account
+     * @param acc to add
      * @throws java.lang.Exception
      */
     public void createAcc(Account acc) throws Exception;
 
     /**
-     *
-     * @param cus
-     * @param acc
+     * Method that addCustomers
+     * @param cus recicustomer id
+     * @param acc account id
      * @throws java.lang.Exception
      */
     public void addCustomers(long cus, long acc) throws Exception;
 
     /**
-     *
-     * @param idAcc
-     * @return
+     * Method that gives an ArrayList with all the movements within 
+     * the account we recive
+     * @param idAcc to search all his movements
+     * @return a Collection with all his movements
      * @throws java.lang.Exception
      */
     public ArrayList<Movement> searchMovements(long idAcc) throws Exception;

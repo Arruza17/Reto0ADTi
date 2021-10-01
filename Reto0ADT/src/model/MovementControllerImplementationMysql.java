@@ -15,6 +15,7 @@ public class MovementControllerImplementationMysql implements MovementController
     private final BDConnection DAO = new BDConnection();
 
     /**
+     * Method that makes the movement
      * @param mov Gets a movement and puts it into the DB
      * @throws java.lang.Exception
      */
